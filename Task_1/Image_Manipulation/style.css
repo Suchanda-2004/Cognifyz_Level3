@@ -7,6 +7,7 @@ body {
   color: #333;
   text-align: center;
 }
+
 .title {
   margin: 30px 0 10px;
 }
@@ -19,6 +20,7 @@ body {
   flex-wrap: wrap;
   margin-bottom: 40px;
 }
+
 .gallery img {
   width: 150px;
   height: auto;
@@ -26,6 +28,7 @@ body {
   cursor: pointer;
   transition: transform 0.3s;
 }
+
 .gallery img:hover {
   transform: scale(1.1);
 }
@@ -40,15 +43,19 @@ body {
   background: rgba(0,0,0,0.8);
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
+
 .lightbox:target {
   display: flex;
 }
+
 .lightbox img {
   max-width: 90%;
   max-height: 80%;
   border-radius: 10px;
 }
+
 .lightbox a {
   position: absolute;
   top: 20px;
@@ -66,11 +73,13 @@ body {
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
+
 .slides {
   display: flex;
   width: 1800px;
   animation: slide 9s infinite;
 }
+
 .slides img {
   width: 600px;
   height: 300px;
@@ -82,4 +91,14 @@ body {
   33%  { transform: translateX(-600px); }
   66%  { transform: translateX(-1200px); }
   100% { transform: translateX(0); }
+}
+
+/* Fix: Hide slideshow when lightbox is active */
+.lightbox:target ~ .slideshow {
+  display: none;
+}
+
+/* Optional: Pause animation instead of hiding */
+.lightbox:target ~ .slideshow .slides {
+  animation-play-state: paused;
 }
